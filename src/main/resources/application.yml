@@ -1,0 +1,46 @@
+server:
+  port: 8081
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            clientId: oauth2-client-app
+            clientSecret: zfSbFGa7hNwJiugxDShgg2RooC28h5JR
+            clientName: oauth2-client-app
+            authorizationGrantType: authorization_code
+            scope: email,profile,openid
+            clientAuthenticationMethod: client_secret_basic
+            redirectUri: http://localhost:8081/oauth2Login
+            provider: keycloak
+
+#          keycloak:
+#            authorizationGrantType: password
+#            clientId: oauth2-client-app
+#            clientName: oauth2-client-app
+#            clientSecret: zfSbFGa7hNwJiugxDShgg2RooC28h5JR
+#            clientAuthenticationMethod: client_secret_basic
+#            scope: email,profile
+#            provider: keycloak
+
+#          keycloak:
+#            authorizationGrantType: password
+#            clientId: oauth2-client-app
+#            clientSecret: zfSbFGa7hNwJiugxDShgg2RooC28h5JR
+#            clientName: oauth2-client-app
+#            clientAuthenticationMethod: client_secret_basic
+#            provider: keycloak
+
+
+
+
+        provider:  # 공급자 설정.
+          keycloak:
+            authorizationUri: http://localhost:8080/realms/oauth2/protocol/openid-connect/auth # OAuth 2.0 권한 코드 부여 엔드 포인트
+            issuerUri: http://localhost:8080/realms/oauth2                                     # 서비스 공급자 위치
+            jwkSetUri: http://localhost:8080/realms/oauth2/protocol/openid-connect/certs      # OAuth 2.0 JwkSetUri 엔드 포인트
+            tokenUri: http://localhost:8080/realms/oauth2/protocol/openid-connect/token        # OAuth 2.0 토큰 엔드 포인트
+            userInfoUri: http://localhost:8080/realms/oauth2/protocol/openid-connect/userinfo # OAuth 2.0 UserInfo 엔드 포인트
+            userNameAttribute: preferred_username                                             # OAuth 2.0 사용자명을 추출하는 key로 사용되는 클레임명

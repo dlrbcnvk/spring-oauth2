@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+<body>
+<!--    <div>Welcome <p><span sec:authorize="isAuthenticated()" th:text="${oAuth2AuthenticationToken}"></span></p></div>-->
+
+<!--    refresh_token way-->
+<!--    <div>Refresh Token<p><span th:text="${authorizedClientAccessToken}"></span></p></div>-->
+
+<!--    <div>Refresh Token after RefreshTokenProvider.authorize() <p><span th:text="${authorizedClientAccessTokenAfter}"></span></p></div>-->
+
+<!--    oauth2Client() 챕터 후반부 커스텀 필터 만들기-->
+    <div>Authentication <p><span th:text="${OAuth2AuthenticationToken}"></span></p></div>
+    <br>
+    <div>accessToken <p><span th:text="${accessToken}"></span></p></div>
+    <br>
+    <div>refreshToken <p><span th:text="${refreshToken}"></span></p></div>
+
+    <div><a href="/logout">Logout</a></div>
+</body>
+</html>

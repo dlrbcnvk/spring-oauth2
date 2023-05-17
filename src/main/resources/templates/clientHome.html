@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script>
+        function authorizationCode() {
+            window.location = new URL('http://localhost:8081/oauth2/authorization/keycloak1');
+        }
+
+        function password() {
+            window.location = new URL('http://localhost:8081/oauth2/authorization/keycloak2');
+        }
+
+        function clientCredentials() {
+            window.location = new URL('http://localhost:8081/oauth2/authorization/keycloak3');
+        }
+    </script>
+</head>
+<body>
+    <div>Welcome</div>
+    <div sec:authorize="isAuthenticated()">
+        <a th:href="@{/logout}">Logout</a>
+    </div>
+    <form action="#" sec:authorize="isAnonymous()">
+        <p><input type="button" onclick="authorizationCode()" value="Authorization Code Grant"></p>
+        <p><input type="button" onclick="password()" value="Resource Owner Password Grant"></p>
+        <p><input type="button" onclick="clientCredentials()" value="Client Credentials Grant"></p>
+    </form>
+</body>
+</html>

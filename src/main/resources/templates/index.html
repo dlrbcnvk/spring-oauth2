@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script>
+        function authorizationCode() {
+            window.location = new URL('http://localhost:8081/oauth2/authorization/keycloak');
+        }
+
+
+    </script>
+</head>
+<body>
+    <div>Welcome</div>
+    <div sec:authorize="isAuthenticated()">
+        <a th:href="@{/logout}">Logout</a>
+    </div>
+    <form action="#" sec:authorize="isAnonymous()">
+        <p><input type="button" onclick="authorizationCode()" value="Authorization Code Grant"></p>
+        <div sec:authorize="isAnonymous()"><a th:href="@{/oauth2Login(username='user',password='1111')}">Password Flow Login</a></div>
+        <div sec:authorize="isAnonymous()"><a th:href="@{/oauth2Login}">Client Credentials Flow Login</a></div>
+        <div sec:authorize="isAnonymous()"><a th:href="@{/oauth2Login/v2(username='user',password='1111')}">Password Flow Login V2</a></div>
+    </form>
+</body>
+</html>
